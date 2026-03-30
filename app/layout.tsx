@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/components/providers/theme-provider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -40,7 +41,14 @@ export default function RootLayout({
               <UserButton />
             </Show>
           </header>
+           <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           {children}
+          </ThemeProvider>
         </ClerkProvider>
       </body>
     </html>
